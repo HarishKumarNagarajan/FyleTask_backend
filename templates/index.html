@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+<title>
+Bank Details
+</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="shortcut icon" type="image/x-icon" href="/templates/bank.png" />
+<style>
+html, body {border: 0; margin: 0; padding: 0;}
+body {font: 14px "Lato", Arial, sans-serif; min-width: 100%; min-height: 100%; color: #666;}
+.container{margin: 0 auto; max-width: 1200px;}
+*{margin: 0; padding: 0; box-sizing: border-box;}
+.row{float: left; width: 100%; padding: 20px 0 50px;}
+h2{text-align: center; color: #2079df; font-size: 28px; float: left; width: 100%; margin: 30px 0; position: relative; line-height: 58px; font-weight: 400;}
+h2:before{content: ""; position: absolute; left: 50%; bottom: 0; width: 100px; height: 2px; background-color: #2079df; margin-left: -50px;}
+:focus{outline: none;}
+
+.col-3{float: left; width: 27.33%; margin: 40px 3%; position: relative;} 
+input[type="text"]{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px;}
+.effect-20 ~ .focus-border:before,
+.effect-20 ~ .focus-border:after{content: ""; position: absolute; top: 0; left: 0; width: 0; height: 2px; background-color: #3399FF; transition: 0.3s;}
+.effect-20 ~ .focus-border:after{top: auto; bottom: 0; left: auto; right: 0;}
+.effect-20 ~ .focus-border i:before,
+.effect-20 ~ .focus-border i:after{content: ""; position: absolute; top: 0; left: 0; width: 2px; height: 0; background-color: #3399FF; transition: 0.4s;}
+.effect-20 ~ .focus-border i:after{left: auto; right: 0; top: auto; bottom: 0;}
+.effect-20:focus ~ .focus-border:before,
+.effect-20:focus ~ .focus-border:after,
+.has-content.effect-20 ~ .focus-border:before,
+.has-content.effect-20 ~ .focus-border:after{width: 100%; transition: 0.3s;}
+.effect-20:focus ~ .focus-border i:before,
+.effect-20:focus ~ .focus-border i:after,
+.has-content.effect-20 ~ .focus-border i:before,
+.has-content.effect-20 ~ .focus-border i:after{height: 100%; transition: 0.4s;}
+.effect-20 ~ label{position: absolute; left: 14px; width: 100%; top: 10px; color: #aaa; transition: 0.3s; z-index: -1; letter-spacing: 0.5px;}
+.effect-20:focus ~ label, .has-content.effect-20 ~ label{top: -18px; left: 0; font-size: 12px; color: #3399FF; transition: 0.3s;}
+</style>
+</head>
+<body>
+{% if request.GET.ifsc %}
+<p>{{disp}}</p>
+{% else %}
+<form method="get" action="{% url 'home' %}">
+<div class="row">
+    <div class="container">
+	<h3><center style="font-size: 30px"><i class="fa fa-bank"></i>Bank Details</center></h3><br><br>
+        <div class="col-3 input-effect">
+        	<center><input class="effect-20" name="ifsc" value="{{request.GET.ifsc}}" type="text" placeholder="IFSC Code" onfocus="this.placeholder = ''" onblur="this.placeholder = 'IFSC Code'" >
+            <label>IFSC Code</label>
+            <span class="focus-border">
+            	<i></i>
+            </span><br>
+            <center><button type="submit" value="submit" style="font-size: 20px">Submit</button></center></center>
+        </div>
+        </div>
+    </div>
+</form>
+{% endif %}
+{% if request.GET.bank %}
+<p>{{disp}}</p>
+{% else %}
+<form method="get" action="{% url 'home' %}">
+    <div class="row">
+    <div class="container">
+    <div class="col-3 input-effect">
+        <center>
+   	<input class="effect-20" name="bank" value="{{request.GET.bank}}" type="text" placeholder="Bank Name"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bank Name'">
+       <label>Bank Name</label>
+       <span class="focus-border">
+       	<i></i>
+       </span>
+   </div>
+    </div>
+    <div class="container">
+    <div class="col-3 input-effect">
+   	<input class="effect-20" name="city" value="{{request.GET.city}}" type="text" placeholder="City"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'City'">
+       <label>City</label>
+       <span class="focus-border">
+       	<i></i>
+       </span><br>
+        <center><button type="submit" value="submit" style="font-size: 20px">Submit</button></center></center>
+   </div>
+        </div>
+    </div>
+</form>
+{% endif %}
+</body>
+</html>

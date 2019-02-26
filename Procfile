@@ -1,0 +1,1 @@
+web: gunicorn ftask.wsgi --log-file -
